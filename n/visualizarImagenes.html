@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizar y Auditar Imágenes</title>
+    <link rel="stylesheet" href="visualizarImagenes.css">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="navbar-content">
+            <a href="index.html" class="logo-container">
+                <img src="https://correos.org.ar/wp-content/uploads/logo-EMA-SERVICIOS-color-ok.png" alt="EMA Servicios"
+                    class="logo-img">
+            </a>
+        </div>
+    </nav>
+
+    <!-- Contenido principal -->
+    <main class="main-content">
+        <h1>Visualizar y Auditar Imágenes</h1>
+
+        <div class="gallery-controls">
+            <label for="file-input" class="custom-file-upload">
+                📷 Subir imágenes
+            </label>
+            <input type="file" id="file-input" multiple accept="image/*">
+            <span id="file-count">Ningún archivo seleccionado</span>
+        </div>
+
+        <!-- Contenedor principal (oculto inicialmente) -->
+        <div class="main-container hidden">
+            <!-- Carrusel -->
+            <div class="carousel" id="carousel">
+                <div class="image-counter" id="image-counter">Imagen 0 de 0 | Desvíos: 0 de 0</div>
+                <div class="carousel-track" id="carousel-track"></div>
+                <div class="carousel-controls">
+                    <button class="carousel-button" onclick="moveSlide(-1)">❮</button>
+                    <button class="carousel-button" onclick="moveSlide(1)">❯</button>
+                </div>
+            </div>
+
+            <!-- Contenedor de desvíos -->
+            <div class="deviation-container">
+                <p>Selecciona los desvíos:</p>
+                <div id="deviation-options" class="deviation-options">
+                    <label><input type="checkbox" value="Falta firma."> Falta firma.</label>
+                    <label><input type="checkbox" value="Falta DNI."> Falta DNI.</label>
+                    <label><input type="checkbox" value="Falta aclaración."> Falta aclaración.</label>
+                    <label><input type="checkbox" value="Falta vínculo."> Falta vínculo.</label>
+                    <label><input type="checkbox" value="Error en tilde."> Error en tilde.</label>
+                    <label><input type="checkbox" value="Faltan referencias."> Faltan referencias.</label>
+                    <label><input type="checkbox" value="Falta hora."> Falta hora.</label>
+                    <label><input type="checkbox" value="Letra ilegible."> Letra ilegible.</label>
+                    <label><input type="checkbox" value="Acuse incompleto."> Acuse incompleto.</label>
+                    <label><input type="checkbox" value="Acuse ilegible."> Acuse ilegible.</label>
+                    <label><input type="checkbox" value="Fuera de plazo."> Fuera de plazo.</label>
+                </div>
+                <button class="comment-btn" onclick="saveComment()">Guardar Desvíos</button>
+                <!-- Nuevos botones de Editar y Eliminar -->
+                <div id="edit-delete-buttons" class="edit-delete-buttons" style="display: none;">
+                    <button class="edit-btn" onclick="editCurrentComment()">Editar</button>
+                    <button class="delete-btn" onclick="deleteCurrentComment()">Eliminar</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Contenedor de descarga (oculto inicialmente) -->
+        <div class="download-container hidden">
+            <h3>Descarga de Imágenes y Comentarios</h3>
+            <p>Ingrese un nombre para la carpeta y seleccione el tipo de descarga que desea realizar.</p>
+
+            <div class="folder-input">
+                <label for="folder-name"><strong>Nombre de la carpeta:</strong></label>
+                <input type="text" id="folder-name" class="folder-name-input" placeholder="Ej: Reporte 01-01-25">
+            </div>
+
+            <div class="download-buttons">
+                <div class="button-group">
+                    <button onclick="downloadPhotosWithDeviation()">Descargar imágenes con desvíos</button>
+                    <p class="button-description">Descarga solo las imágenes que tienen comentarios o irregularidades.
+                    </p>
+                </div>
+
+                <div class="button-group">
+                    <button onclick="downloadPhotosWithoutDeviation()">Descargar imágenes sin desvíos</button>
+                    <p class="button-description">Descarga solo las imágenes sin comentarios ni irregularidades.</p>
+                </div>
+
+                <div class="button-group">
+                    <button onclick="exportToExcel()">Exportar comentarios a Excel</button>
+                    <p class="button-description">Descarga un archivo Excel con todos los comentarios registrados.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Lista de comentarios (oculto inicialmente) -->
+        <div id="comments-list" class="comments-list hidden">
+            <h3>Comentarios:</h3>
+            <div id="comment-items"></div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <p>Creado por Antonio Melino para EMA Servicios. Copyright © Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+    <script src="visualizarImagenes.js"></script>
+</body>
+
+</html>

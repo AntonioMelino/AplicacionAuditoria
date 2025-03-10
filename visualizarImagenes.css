@@ -1,0 +1,457 @@
+/* Estilos generales del body */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-height: 100vh;
+    /* Asegura que el body ocupe al menos el 100% de la altura de la ventana */
+    background-color: #f0f4f8;
+    color: #333;
+    /* padding-top: 80px; Añade un padding superior para evitar que el contenido se solape con el navbar */
+}
+
+/* Clase para ocultar elementos */
+.hidden {
+    display: none !important;
+    /* Usamos !important para asegurar que prevalezca */
+}
+
+h1 {
+    color: #004aad;
+    margin-top: 20px;
+}
+
+.menu-button {
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: inline-block;
+    margin-bottom: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.menu-button:hover {
+    background-color: #005bb5;
+}
+
+.gallery-controls {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.custom-file-upload {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.custom-file-upload:hover {
+    background-color: #0056b3;
+}
+
+#file-input {
+    display: none;
+}
+
+#file-count {
+    font-size: 14px;
+    color: #333;
+    font-weight: bold;
+}
+
+.gallery-controls button {
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #004aad;
+    color: white;
+    transition: background-color 0.3s ease;
+}
+
+.gallery-controls button:hover {
+    background-color: #005bb5;
+}
+
+.folder-name-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #004aad;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+/* Contenedor principal */
+.main-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    margin: 20px auto;
+    max-width: 1200px;
+}
+
+/* Carrusel */
+.carousel {
+    flex: 1;
+    max-width: 800px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    background-color: white;
+}
+
+.carousel-track {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-slide {
+    width: 100%;
+    flex-shrink: 0;
+}
+
+.carousel img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.carousel-controls {
+    display: flex;
+    justify-content: space-between;
+    position: absolute;
+    top: 50%;
+    width: 100%;
+    transform: translateY(-50%);
+}
+
+.carousel-button {
+    background-color: rgba(0, 74, 173, 0.8);
+    color: white;
+    border: none;
+    padding: 15px;
+    cursor: pointer;
+    border-radius: 50%;
+    font-size: 20px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 91, 181, 0.9);
+}
+
+.image-counter {
+    text-align: center;
+    margin: 10px 0;
+    font-size: 18px;
+    font-weight: bold;
+    color: #004aad;
+}
+
+/* Contenedor de desvíos */
+.deviation-container {
+    flex: 0 0 300px;
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.deviation-options {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.deviation-options label {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.deviation-options input {
+    transform: scale(1.2);
+    cursor: pointer;
+}
+
+/* CONTENIDO DE DESCARGA */
+.download-container {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 10px;
+    width: 600px;
+    /* Aumentado el ancho */
+    text-align: center;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.folder-input {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.folder-name-input {
+    width: calc(100% - 20px);
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.download-buttons {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+}
+
+.button-group {
+    width: 45%;
+    /* Distribuye mejor los botones */
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.button-group button {
+    width: 100%;
+    padding: 12px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    background: #007bff;
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+.button-group button:hover {
+    background: #0056b3;
+}
+
+.button-description {
+    font-size: 12px;
+    color: #555;
+    margin-top: 5px;
+}
+
+
+.comment-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.comment-btn:hover {
+    background-color: #005bb5;
+}
+
+.comments-list {
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #e6f0ff;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.comment-item {
+    margin-bottom: 10px;
+    padding: 10px;
+    background-color: white;
+    border: 1px solid #004aad;
+    border-radius: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.edit-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #ffc107;
+    color: black;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.delete-btn {
+    padding: 5px 10px;
+    font-size: 14px;
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.delete-btn:hover {
+    background-color: #c82333;
+}
+
+.export-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #004aad;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.export-btn:hover {
+    background-color: #005bb5;
+}
+
+.comment-btn.guardado {
+    background-color: #28a745 !important;
+    /* Verde */
+    cursor: not-allowed;
+    /* Cambiar el cursor a "no permitido" */
+}
+
+/* Estilos para el contenedor de los botones de Editar y Eliminar */
+.edit-delete-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+    justify-content: center;
+}
+
+.edit-delete-buttons button {
+    padding: 10px 15px;
+    font-size: 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-delete-buttons .edit-btn {
+    background-color: #ffc107;
+    color: black;
+}
+
+.edit-delete-buttons .edit-btn:hover {
+    background-color: #e0a800;
+}
+
+.edit-delete-buttons .delete-btn {
+    background-color: #dc3545;
+    color: white;
+}
+
+.edit-delete-buttons .delete-btn:hover {
+    background-color: #c82333;
+}
+
+/* Navbar más delgado con color más suave */
+.navbar {
+    background-color: #f0f4f8;
+    /* padding: 5px 20px; Navbar más delgado */
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    /* Centra el logo */
+    align-items: center;
+    /* position: fixed; */
+    /* Elimina esta línea */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img {
+    height: 100px;
+    /* Aumenté el tamaño del logo */
+    width: auto;
+}
+
+.home-button {
+    text-decoration: none;
+    color: white;
+    background-color: #007BFF;
+    padding: 8px 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.home-button:hover {
+    background-color: #005bb5;
+}
+
+/* Contenido principal */
+.main-content {
+    flex: 1;
+    /* Hace que el contenido principal ocupe el espacio restante */
+    margin-top: 20px;
+    /* Ajusta el margen superior para evitar que el navbar lo cubra */
+    padding: 20px;
+    /* Espaciado interno */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* Centra horizontalmente */
+    text-align: center;
+    /* Asegura que el texto dentro esté centrado */
+}
+
+/* Footer */
+.footer {
+    background-color: #f4f7fc;
+    color: black;
+    text-align: center;
+    padding: 10px 0;
+    width: 100%;
+}
+
+.footer p {
+    margin: 0;
+    font-size: 14px;
+}

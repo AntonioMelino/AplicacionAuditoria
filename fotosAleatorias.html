@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Seleccionar y Descargar Imágenes Aleatorias</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f4f7fc;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      /* Distribuye el espacio entre el contenido y el footer */
+      align-items: center;
+      padding: 5px;
+    }
+
+    .container {
+      background-color: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      max-width: 600px;
+      padding: 30px 40px;
+      text-align: center;
+      margin-top: 5px;
+    }
+
+    h1 {
+      font-size: 28px;
+      color: #333;
+      margin-bottom: 20px;
+    }
+
+    .menu-button {
+      text-decoration: none;
+      color: white;
+      background-color: #007BFF;
+      padding: 12px 20px;
+      border-radius: 5px;
+      display: inline-block;
+      margin-bottom: 20px;
+      transition: background-color 0.3s;
+      font-size: 16px;
+    }
+
+    .menu-button:hover {
+      background-color: #0056b3;
+    }
+
+    input[type="file"],
+    input[type="number"] {
+      padding: 10px;
+      font-size: 16px;
+      border: 2px solid #ddd;
+      border-radius: 5px;
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    input[type="number"] {
+      width: 160px;
+      display: inline-block;
+    }
+
+    button {
+      margin-top: 20px;
+      padding: 12px 25px;
+      background-color: #28a745;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #218838;
+    }
+
+    .buttons-container {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+    }
+
+    .progress-bar-container {
+      margin-top: 25px;
+      width: 100%;
+      background-color: #e0e0e0;
+      border-radius: 10px;
+      height: 12px;
+      display: none;
+    }
+
+    .progress-bar {
+      width: 0;
+      height: 100%;
+      background-color: #76c7c0;
+      border-radius: 10px;
+    }
+
+    .file-count {
+      margin-top: 10px;
+      font-size: 14px;
+      color: #007BFF;
+      font-weight: bold;
+    }
+
+    .alert {
+      background-color: #ffc107;
+      color: #333;
+      padding: 10px;
+      border-radius: 5px;
+      margin-top: 15px;
+      font-size: 14px;
+      display: none;
+    }
+
+    /* Navbar más delgado con color más suave */
+.navbar {
+    background-color: #f0f4f8;
+    /* padding: 5px 20px; Navbar más delgado */
+    width: 100%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    justify-content: center;
+    /* Centra el logo */
+    align-items: center;
+    /* position: fixed; */
+    /* Elimina esta línea */
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.navbar-content {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.logo-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-img {
+    height: 100px;
+    /* Aumenté el tamaño del logo */
+    width: auto;
+}
+
+    /* Estilos para el footer */
+    .footer {
+      width: 100%;
+      text-align: center;
+      padding: 10px 0;
+      background-color: #f4f7fc;
+      color: black;
+      margin-top: 20px;
+      /* Espacio entre el contenido y el footer */
+    }
+
+    .footer p {
+      margin: 0;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="navbar-content">
+        <a href="index.html" class="logo-container">
+            <img src="https://correos.org.ar/wp-content/uploads/logo-EMA-SERVICIOS-color-ok.png" alt="EMA Servicios"
+                class="logo-img">
+        </a>
+    </div>
+</nav>
+
+  <div class="container">
+    <h1>Seleccionar y Descargar Imágenes Aleatorias</h1>
+
+    <input type="file" id="fileInput" multiple webkitdirectory mozdirectory />
+    <div class="file-count" id="fileCount">0 archivos seleccionados</div>
+
+    <div class="buttons-container">
+      <input type="number" id="imageCount" placeholder="Cantidad" min="1" max="1000">
+      <button id="processBtn">Seleccionar Imágenes Aleatorias</button>
+    </div>
+
+    <button id="downloadBtn" style="display: none;">Descargar Selección</button>
+
+    <div class="progress-bar-container" id="progressBarContainer">
+      <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <div class="alert" id="alertMessage">Por favor, selecciona una carpeta con imágenes.</div>
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <p>Creado por Antonio Melino para EMA Servicios. Copyright © Todos los derechos reservados.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jszip@3.10.1/dist/jszip.min.js"></script>
+  <script>
+    document.getElementById('processBtn').addEventListener('click', selectRandomImages);
+    document.getElementById('downloadBtn').addEventListener('click', downloadZip);
+
+    let selectedImages = [];
+
+    function selectRandomImages() {
+      const fileInput = document.getElementById('fileInput');
+      const files = fileInput.files;
+      const imageCount = parseInt(document.getElementById('imageCount').value, 10);
+
+      if (files.length === 0) {
+        showAlert('Por favor, selecciona una carpeta con imágenes.');
+        return;
+      }
+
+      if (isNaN(imageCount) || imageCount < 1) {
+        showAlert('Ingresa un número válido de imágenes.');
+        return;
+      }
+
+      let imageFiles = [];
+      for (let i = 0; i < files.length; i++) {
+        if (files[i].type.startsWith('image/')) {
+          imageFiles.push(files[i]);
+        }
+      }
+
+      const selectedCount = Math.min(imageCount, imageFiles.length);
+      const randomImages = shuffle(imageFiles).slice(0, selectedCount);
+      selectedImages = randomImages;
+
+      document.getElementById('fileCount').innerText = `${selectedImages.length} imagen(es) seleccionada(s)`;
+      document.getElementById('downloadBtn').style.display = 'inline-block';
+      alert(`${randomImages.length} imágenes seleccionadas aleatoriamente.`);
+    }
+
+    function shuffle(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+      return array;
+    }
+
+    function downloadZip() {
+      if (selectedImages.length === 0) {
+        alert('Por favor, selecciona imágenes antes de descargar.');
+        return;
+      }
+
+      const zip = new JSZip();
+      const folder = zip.folder('imagenes');
+
+      selectedImages.forEach((file) => {
+        folder.file(file.name, file);
+      });
+
+      zip.generateAsync({ type: 'blob' })
+        .then(function (content) {
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(content);
+          link.download = 'imagenes_seleccionadas.zip';
+          link.click();
+        });
+    }
+
+    function showAlert(message) {
+      const alertMessage = document.getElementById('alertMessage');
+      alertMessage.innerText = message;
+      alertMessage.style.display = 'block';
+      setTimeout(() => alertMessage.style.display = 'none', 3000);
+    }
+  </script>
+
+</body>
+
+</html>
