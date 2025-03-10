@@ -1,9 +1,5 @@
 # **Aplicacion Auditoria**
 
-![Logo de EMA Servicios](https://correos.org.ar/wp-content/uploads/logo-EMA-SERVICIOS-color-ok.png)
-
----
-
 ## **Descripción del Proyecto**
 
 Esta aplicación está diseñada para facilitar la **verificación de fotos en auditorías**, permitiendo a los usuarios cargar imágenes, identificar desvíos o irregularidades, y gestionar los resultados de manera eficiente. Además, ofrece funcionalidades avanzadas como la **conversión de archivos PDF a JPG**, **filtrado aleatorio de imagenes** y la exportación de datos a Excel.
@@ -41,7 +37,7 @@ Es una herramienta ideal para profesionales que necesitan validar y auditar imá
 
 ## **Tecnologías Utilizadas**
 
-### **Lenguajes y Frameworks**
+### **Lenguajes**
 
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white)
 ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white)
@@ -83,12 +79,7 @@ Es una herramienta ideal para profesionales que necesitan validar y auditar imá
 
 ## **Capturas de Pantalla**
 
-_(Aquí puedes agregar capturas de pantalla de tu aplicación. Por ejemplo:)_  
-![Carrusel de Imágenes](https://via.placeholder.com/400)  
-_Carrusel interactivo para navegar entre imágenes._
-
-![Selección de Desvíos](https://via.placeholder.com/400)  
-_Panel de selección de desvíos y comentarios._
+![AplicacionAuditoria](https://github.com/user-attachments/assets/b0cd226d-2b7f-4e2b-8980-18f314bd3e3c)
 
 ---
 
@@ -115,7 +106,6 @@ Este proyecto está bajo la licencia [MIT](https://opensource.org/licenses/MIT).
 - **Antonio Melino**
   - 📧 Email: [antoniomelino1997@gmail.com](mailto:antoniomelino1997@gmail.com)
   - 🔗 LinkedIn: [Antonio Melino](https://www.linkedin.com/in/antonio-melino-82a885213/)
-  - 🐱 GitHub: [AntonioMelino](https://github.com/AntonioMelino)
 
 ---
 
